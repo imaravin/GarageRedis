@@ -6,6 +6,14 @@ The master will send data modifying events to the slave.
 
 Replication server will be inited in the next port and the server will receive changes from master
 
+To Run Master
+
+Java Server conf/master.conf
+
+To Run Slave
+
+Java Server conf/slave.conf
+
 Usage
 
 Example
