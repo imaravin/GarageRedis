@@ -180,25 +180,29 @@ public class Server
 
         if(!isMaster)
         {
-
-            String reg = "http://" + master + ":" + masterPort + "/replication?" + bindIP + ":" + replicationPort;
-
-            URL url = new URL(reg);
-
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            int code = connection.getResponseCode();
-            if(code == 200)
-            {
-                System.out.println("Slave registered to master successfully");
-            }
-            else
-            {
-                System.out.println("Error while registering slave");
-            }
-
-            Replication.initReplicationServer(replicationPort);
-            System.out.println("Slave server started success");
+            startReplicationServer(master, masterPort, replicationPort);
         }
+    }
+
+    private static void startReplicationServer(String master, int masterPort, int replicationPort) throws Exception
+    {
+        String reg = "http://" + master + ":" + masterPort + "/replication?" + bindIP + ":" + replicationPort;
+
+        URL url = new URL(reg);
+
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        int code = connection.getResponseCode();
+        if(code == 200)
+        {
+            System.out.println("Slave registered to master successfully");
+        }
+        else
+        {
+            System.out.println("Error while registering slave");
+        }
+
+        Replication.initReplicationServer(replicationPort);
+        System.out.println("Slave server started success");
     }
 
     enum Operation
