@@ -11,9 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Server
 {
-    public static ConcurrentHashMap<String, String> dataMap = new ConcurrentHashMap();
+    public static final ConcurrentHashMap<String, String> dataMap = new ConcurrentHashMap<>();
     private static int port;
-    private static boolean isMaster;
     private static String bindIP;
     private static Properties properties;
 
@@ -74,7 +73,7 @@ public class Server
             System.exit(0);
         }
 
-        isMaster = Boolean.parseBoolean(properties.getProperty(ServerConstants.IS_MASTER));
+        boolean isMaster = Boolean.parseBoolean(properties.getProperty(ServerConstants.IS_MASTER));
 
         if(!isMaster)
         {

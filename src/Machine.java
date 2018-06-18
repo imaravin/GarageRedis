@@ -1,7 +1,7 @@
-public class Machine
+class Machine
 {
-    String address;
-    int port;
+    final String address;
+    final int port;
 
     public Machine(String address, int port)
     {

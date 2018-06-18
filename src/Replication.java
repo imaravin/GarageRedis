@@ -5,12 +5,12 @@ import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Replication
+class Replication
 {
 
     private static ServerSocket replicationServer;
     private static Socket client;
-    private static Set<Machine> clientsList = new HashSet<>();
+    private static final Set<Machine> clientsList = new HashSet<>();
 
     public static void initReplicationServer(int port) throws Exception
     {
@@ -30,7 +30,7 @@ public class Replication
         System.out.println("Replication server started successfully");
     }
 
-    public static void acceptFromMaster() throws Exception
+    private static void acceptFromMaster() throws Exception
     {
 
         while(true)
@@ -55,7 +55,7 @@ public class Replication
     }
 
 
-    public static void sendToSlave(String data)
+    private static void sendToSlave(String data)
     {
         clientsList.forEach(machine ->
         {
@@ -122,7 +122,7 @@ public class Replication
         // cascading the machines will be connected
         try
         {
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
             buffer.append(operation.ordinal());
             buffer.append(" ");
             buffer.append(key);
