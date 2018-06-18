@@ -200,7 +200,7 @@ public class Server
             System.out.println("Error while registering slave");
         }
 
-        Replication.initReplicationServer(replicationPort);
+        Replication.initReplicationServer(bindIP, replicationPort);
         System.out.println("Slave server started success");
     }
 

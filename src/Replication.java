@@ -12,10 +12,10 @@ class Replication
     private static Socket client;
     private static final Set<Machine> clientsList = new HashSet<>();
 
-    public static void initReplicationServer(int port) throws Exception
+    public static void initReplicationServer(String host, int port) throws Exception
     {
         System.out.println("Initing replication server...");
-        replicationServer = new ServerSocket(port, 10, InetAddress.getLocalHost());
+        replicationServer = new ServerSocket(port, 10, InetAddress.getByName(host));
         new Thread(() ->
         {
             try
